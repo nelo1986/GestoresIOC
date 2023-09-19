@@ -60,5 +60,3 @@ Los datos para acceder a la base de datos desde Adminer son:
 - **Username:** gestor
 - **Password:** ioc
 - **Database:** gestores
-
->>>>>>> 8d820a0 (first commit)

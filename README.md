@@ -50,7 +50,7 @@ Podremos acceder a los mismos desde nuestra máquina local en los siguientes pue
 
 **app:** ```http://localhost:3000```
 
-Al levantarse el contenedor de MySQL se crea una base de datos llamada ```gestores```, una tabla llamada ```recipes```` y se insertan 50 registros de prueba.
+Al levantarse el contenedor de MySQL se crea una base de datos llamada ```gestores```, una tabla llamada ```recipes``` y se insertan 50 registros de prueba.
 
 Los datos para acceder a la base de datos desde Adminer son:
 

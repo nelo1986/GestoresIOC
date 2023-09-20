@@ -13,18 +13,18 @@ Se desplegarán 3 contenedores:
 0. Dependiendo de nuestro procesador (x86 o arm64), tendremos descomentar las siguientes líneas:
 
 
-```js
-//fichero Dockerfile
-ARG PLATFORM=amd64 (Descomentar esta línea para Windows)
-ARG PLATFORM=arm64v8 (Descomentar esta línea para Mac con procesador Apple Silicon)
-```
+    ```js
+    //fichero Dockerfile
+    ARG PLATFORM=amd64 (Descomentar esta línea para Windows)
+    ARG PLATFORM=arm64v8 (Descomentar esta línea para Mac con procesador Apple Silicon)
+    ```
 
 
-```js
-//fichero .env
-BUILDPLATFORM=amd64 (Descomentar esta línea para Windows o Mac con Intel)
-BUILDPLATFORM=arm64v8 (Descomentar esta línea para Mac con procesador Apple Silicon)
-````
+    ```js
+    //fichero .env
+    BUILDPLATFORM=amd64 (Descomentar esta línea para Windows o Mac con Intel)
+    BUILDPLATFORM=arm64v8 (Descomentar esta línea para Mac con procesador Apple Silicon)
+    ````
 
 1. Nos movemos al directorio local donde queremos desplegar el entorno.
 2. Clonamos el repositorio con los archivos con ```git clone```.
@@ -44,13 +44,13 @@ docker-compose up --build -d
 
 Podremos acceder a los mismos desde nuestra máquina local en los siguientes puertos:
 
-**Adminer:** ```http://localhost:8080```
+**Adminer:** ``` http://localhost:8080```
 
-**app:** ```http://localhost:3000```
+**app:** ``` http://localhost:3000```
 
 Al levantarse el contenedor de MySQL se crea una base de datos llamada ```gestores```, una tabla llamada ```recipes``` y se insertan 50 registros de prueba.
 
-Los datos para acceder a la base de datos desde Adminer son:
+Los datos para acceder a la base de datos desde ```Adminer`````` son:
 
 
 - **System:**	MySQL
@@ -60,9 +60,9 @@ Los datos para acceder a la base de datos desde Adminer son:
 - **Database:** gestores
 
 ## Nota
-Dentro del contenedor con la app se ejecuta el proceso ```nodemon```, así que al instalar un módulo nuevo, agregamos nuevos directorios, etc, será necesario reiniciar el contenedor para ver los cambios.
+Dentro del contenedor con la app se ejecuta el proceso ```nodemon```, así que al instalar un módulo nuevo o agreguemos nuevos directorios, será necesario reiniciar el contenedor para ver los cambios.
 
-```docker
+```
 docker-compose down
 docker-compose up --build -d 
 ```

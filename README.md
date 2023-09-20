@@ -60,6 +60,24 @@ git pull origin main
 docker-compose down
 docker-compose up --build -d 
 ```
+
+## Acceso a los servicios
+
+Para acceder a los servicios, sigue las siguientes URLs desde tu navegador:
+
+- **Adminer**: [http://localhost:8080](http://localhost:8080)
+- **app**: [http://localhost:3000](http://localhost:3000)
+
+### Datos para Adminer
+
+Para acceder a la base de datos mediante Adminer, utiliza los siguientes datos:
+
+- **System**: MySQL
+- **Server**: host.docker.internal
+- **Username**: gestor
+- **Password**: ioc
+- **Database**: gestores
+
 ## Nota Importante
 
 Dentro del contenedor `app` se ejecuta el proceso `nodemon`. Si instalas un nuevo módulo o agregas nuevos directorios será necesario ejecutar los siguientes comandos para reiniciar el contenedor:

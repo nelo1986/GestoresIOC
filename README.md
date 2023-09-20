@@ -22,7 +22,7 @@ ARG PLATFORM=arm64v8 (Descomentar esta línea para Mac con procesador Apple Sili
 
 ```js
 //fichero .env
-BUILDPLATFORM=amd64 (Descomentar esta línea para Windows)
+BUILDPLATFORM=amd64 (Descomentar esta línea para Windows o Mac con Intel)
 BUILDPLATFORM=arm64v8 (Descomentar esta línea para Mac con procesador Apple Silicon)
 ````
 

@@ -10,7 +10,7 @@ Este proyecto permite desplegar un entorno de desarrollo que consta de tres cont
 
 1. [Instrucciones de instalación](#instrucciones-de-instalación)
 2. [Uso](#uso)
-3. [Acceso a los servicios](#acceso-a-servicios)
+3. [Acceso a los servicios](#acceso-a-los-servicios)
 4. [Nota importante](#nota-importante)
 
 ## Instrucciones de instalación

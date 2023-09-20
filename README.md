@@ -1,4 +1,4 @@
-# Despliegue de Entorno de Desarrollo con Node.js (Express.js), MySQL y Adminer usando Docker-Compose
+# Despliegue de un entorno de eesarrollo con Node.js (Express.js), MySQL y Adminer usando Docker-Compose
 
 Este proyecto permite desplegar un entorno de desarrollo que consta de tres contenedores:
 
@@ -8,12 +8,12 @@ Este proyecto permite desplegar un entorno de desarrollo que consta de tres cont
 
 ## Tabla de Contenidos
 
-1. [Instrucciones de Instalación](#instrucciones-de-instalación)
+1. [Instrucciones de instalación](#instrucciones-de-instalación)
 2. [Uso](#uso)
-3. [Acceso a Servicios](#acceso-a-servicios)
-4. [Nota Importante](#nota-importante)
+3. [Acceso a los servicios](#acceso-a-servicios)
+4. [Nota importante](#nota-importante)
 
-## Instrucciones de Instalación
+## Instrucciones de instalación
 
 ### Preparación
 
@@ -22,21 +22,21 @@ Dependiendo de la arquitectura de tu procesador (x86 o arm64), tendrás que desc
 - **Dockerfile**
 
     ```dockerfile
-    ARG PLATFORM=amd64 # Descomentar para Windows, Linux o Mac con Intel
+    # ARG PLATFORM=amd64 # Descomentar para Windows, Linux o Mac con Intel
     # ARG PLATFORM=arm64v8 # Descomentar para Mac con procesador Apple Silicon
     ```
 
 - **.env**
 
     ```dotenv
-    BUILDPLATFORM=amd64 # Descomentar para Windows, Linux o Mac con Intel
+    # BUILDPLATFORM=amd64 # Descomentar para Windows, Linux o Mac con Intel
     # BUILDPLATFORM=arm64v8 # Descomentar para Mac con procesador Apple Silicon
     ```
 
 ### Pasos de Instalación
 
-1. **Navega** al directorio local donde deseas desplegar el entorno.
-2. **Clona** el repositorio:
+1. **Muévete** al directorio local donde deseas desplegar el entorno.
+2. **Clona** este repositorio:
 
     ```bash
     git clone [URL_DEL_REPOSITORIO]
@@ -62,7 +62,7 @@ docker-compose up --build -d
 ```
 ## Nota Importante
 
-Dentro del contenedor `app`, se ejecuta el proceso `nodemon`. Si instalas un nuevo módulo o agregas nuevos directorios, será necesario ejecutar los siguientes comandos para reiniciar el contenedor:
+Dentro del contenedor `app` se ejecuta el proceso `nodemon`. Si instalas un nuevo módulo o agregas nuevos directorios será necesario ejecutar los siguientes comandos para reiniciar el contenedor:
 
 ```bash
 docker-compose down

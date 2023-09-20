@@ -1,69 +1,69 @@
-Instrucciones para el despliegue de un entorno de desarrollo básico para Node Js (Express Js), MySql y Adminer usando docker-compose.
+# Despliegue de Entorno de Desarrollo con Node.js (Express.js), MySQL y Adminer usando Docker-Compose
 
-Se desplegarán 3 contenedores:
-- Base de datos MySQL
-- Adminer (para administrar la base de datos)
-- app (aplicación básica de NodeJs con ExpressJs)
+Este proyecto permite desplegar un entorno de desarrollo que consta de tres contenedores:
 
+- **MySQL:** Base de datos
+- **Adminer:** Herramienta para administración de la base de datos
+- **app:** Aplicación básica usando Node.js con Express.js
 
+## Tabla de Contenidos
 
-## Instrucciones de instalación
+1. [Instrucciones de Instalación](#instrucciones-de-instalación)
+2. [Uso](#uso)
+3. [Acceso a Servicios](#acceso-a-servicios)
+4. [Nota Importante](#nota-importante)
 
+## Instrucciones de Instalación
 
-0. Dependiendo de nuestro procesador (x86 o arm64), tendremos descomentar las siguientes líneas:
+### Preparación
 
+Dependiendo de la arquitectura de tu procesador (x86 o arm64), tendrás que descomentar las líneas correspondientes en los ficheros `Dockerfile` y `.env`.
 
-    ```js
-    //fichero Dockerfile
-    ARG PLATFORM=amd64 //Descomentar esta línea para Windows, Linux o Mac con Intel
-    ARG PLATFORM=arm64v8 //Descomentar esta línea para Mac con procesador Apple Silicon
+- **Dockerfile**
+
+    ```dockerfile
+    ARG PLATFORM=amd64 # Descomentar para Windows, Linux o Mac con Intel
+    # ARG PLATFORM=arm64v8 # Descomentar para Mac con procesador Apple Silicon
     ```
 
+- **.env**
 
-    ```js
-    //fichero .env
-    BUILDPLATFORM=amd64 //Descomentar esta línea para Windows, Linux o Mac con Intel
-    BUILDPLATFORM=arm64v8 //Descomentar esta línea para Mac con procesador Apple Silicon
-    ````
+    ```dotenv
+    BUILDPLATFORM=amd64 # Descomentar para Windows, Linux o Mac con Intel
+    # BUILDPLATFORM=arm64v8 # Descomentar para Mac con procesador Apple Silicon
+    ```
 
-1. Nos movemos al directorio local donde queremos desplegar el entorno.
-2. Clonamos el repositorio con los archivos con ```git clone```.
-3. Ejecutamos el script *update_and_run.sh/bat* (renombrar con la extensión que corresponda en Linux/Mac o Windows).
+### Pasos de Instalación
 
-Debemos lanzar este script cada vez que vayamos a trabajar con el proyecto. Básicamente, se hará un pull y se levantarán los contenedores.
+1. **Navega** al directorio local donde deseas desplegar el entorno.
+2. **Clona** el repositorio:
+
+    ```bash
+    git clone [URL_DEL_REPOSITORIO]
+    ```
+
+3. **Ejecuta** el script `update_and_run.sh` (en Linux/Mac) o `update_and_run.bat` (en Windows):
+
+    ```bash
+    ./update_and_run.sh  # o update_and_run.bat en Windows
+    ```
+
+Este script actualizará el repositorio local, detendrá los contenedores si están ejecutándose, construirá la imagen y levantará los contenedores.
+
+## Uso
+
+Es necesario ejecutar el script `update_and_run.sh` (o `.bat`) cada vez que trabajemos en el proyecto. Este script se encarga de actualizar el repositorio y levantar los contenedores.
 
 ```bash
-#fichero update_and_run.sh
-
-#actualiza repositorio local
+# fichero update_and_run.sh
 git pull origin main
 docker-compose down
-#Crea imagen y levanta el contenedor"
 docker-compose up --build -d 
 ```
+## Nota Importante
 
+Dentro del contenedor `app`, se ejecuta el proceso `nodemon`. Si instalas un nuevo módulo o agregas nuevos directorios, será necesario ejecutar los siguientes comandos para reiniciar el contenedor:
 
-Podremos acceder a los mismos desde nuestra máquina local en los siguientes puertos:
-
-**Adminer:** ``` http://localhost:8080```
-
-**app:** ``` http://localhost:3000```
-
-Al levantarse el contenedor de MySQL se crea una base de datos llamada ```gestores```, una tabla llamada ```recipes``` y se insertan 50 registros de prueba.
-
-Los datos para acceder a la base de datos desde ```Adminer`````` son:
-
-
-- **System:**	MySQL
-- **Server:**	host.docker.internal
-- **Username:** gestor
-- **Password:** ioc
-- **Database:** gestores
-
-## Nota
-Dentro del contenedor con la app se ejecuta el proceso ```nodemon```, así que al instalar un módulo nuevo o agreguemos nuevos directorios, será necesario reiniciar el contenedor para ver los cambios.
-
-```
+```bash
 docker-compose down
 docker-compose up --build -d 
-```

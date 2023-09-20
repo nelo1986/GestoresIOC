@@ -15,15 +15,15 @@ Se desplegarán 3 contenedores:
 
     ```js
     //fichero Dockerfile
-    ARG PLATFORM=amd64 (Descomentar esta línea para Windows)
-    ARG PLATFORM=arm64v8 (Descomentar esta línea para Mac con procesador Apple Silicon)
+    ARG PLATFORM=amd64 //Descomentar esta línea para Windows, Linux o Mac con Intel
+    ARG PLATFORM=arm64v8 //Descomentar esta línea para Mac con procesador Apple Silicon
     ```
 
 
     ```js
     //fichero .env
-    BUILDPLATFORM=amd64 (Descomentar esta línea para Windows o Mac con Intel)
-    BUILDPLATFORM=arm64v8 (Descomentar esta línea para Mac con procesador Apple Silicon)
+    BUILDPLATFORM=amd64 //Descomentar esta línea para Windows, Linux o Mac con Intel
+    BUILDPLATFORM=arm64v8 //Descomentar esta línea para Mac con procesador Apple Silicon
     ````
 
 1. Nos movemos al directorio local donde queremos desplegar el entorno.
@@ -33,11 +33,12 @@ Se desplegarán 3 contenedores:
 Debemos lanzar este script cada vez que vayamos a trabajar con el proyecto. Básicamente, se hará un pull y se levantarán los contenedores.
 
 ```bash
-#update_and_run.sh
-echo "Actualizando repositorio local"
+#fichero update_and_run.sh
+
+#actualiza repositorio local
 git pull origin main
 docker-compose down
-echo "Creando imagen y levantando contenedor"
+#Crea imagen y levanta el contenedor"
 docker-compose up --build -d 
 ```
 

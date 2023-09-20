@@ -34,8 +34,6 @@ Debemos lanzar este script cada vez que vayamos a trabajar con el proyecto. Bás
 
 ```bash
 #update_and_run.sh
-echo "Moviendo a carpeta del proyecto"
-cd "./GestoresIOC"
 echo "Actualizando repositorio local"
 git pull origin main
 docker-compose down

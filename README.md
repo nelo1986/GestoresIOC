@@ -1,16 +1,16 @@
-Instrucciones para el despliegue de un entorno de desarrollo básico para NodeJs (ExpressJs), MySql y Adminer usando docker-compose.
+Instrucciones para el despliegue de un entorno de desarrollo básico para Node Js (Express Js), MySql y Adminer usando docker-compose.
 
 Se desplegarán 3 contenedores:
 - Base de datos MySQL
 - Adminer (para administrar la base de datos)
-- app (aplicacion basica de NodeJs con EspressJs)
+- app (aplicación básica de NodeJs con ExpressJs)
 
 
 
 ## Instrucciones de instalación
 
 
-0. Dependiendo de nuestro procesador (x86 o arm64), tendremos descomentar las siguientes lineas
+0. Dependiendo de nuestro procesador (x86 o arm64), tendremos descomentar las siguientes líneas:
 
 
 ```js
@@ -30,7 +30,7 @@ BUILDPLATFORM=arm64v8 (Descomentar esta línea para Mac con procesador Apple Sil
 2. Clonamos el repositorio con los archivos con ```git clone```.
 3. Ejecutamos el script *update_and_run.sh/bat* (renombrar con la extensión que corresponda en Linux/Mac o Windows).
 
-Debemos lanzar este script cada vez que vayamos a trabajar con el proyecto. Básicamente, se hará un pull y se levantarán los conetenedores.
+Debemos lanzar este script cada vez que vayamos a trabajar con el proyecto. Básicamente, se hará un pull y se levantarán los contenedores.
 
 ```bash
 #update_and_run.sh
@@ -58,3 +58,11 @@ Los datos para acceder a la base de datos desde Adminer son:
 - **Username:** gestor
 - **Password:** ioc
 - **Database:** gestores
+
+## Nota
+Dentro del contenedor con la app se ejecuta el proceso ```nodemon```, así que al instalar un módulo nuevo, agregamos nuevos directorios, etc, será necesario reiniciar el contenedor para ver los cambios.
+
+```docker
+docker-compose down
+docker-compose up --build -d 
+```
